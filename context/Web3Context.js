@@ -6,15 +6,15 @@ const Web3Context = createContext()
 
 const Web3Provider = ({ children, signer ,account }) => {
     const [contract, setContract] = useState(null)
-    const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+    const contractAddress = '0x36D547A2038f99EF45E51d8C2cBCD83F4D204cE2'
 
     useEffect(() => {
         async function connectContract() {
             if (!signer) return
-        
             try {
                 const contract = new ethers.Contract(contractAddress, ContractABI.abi, signer)
                 setContract(contract)
+                console.log(contract)
             } catch (err) {
                 console.error(err)
                 alert('Error connecting to contract')

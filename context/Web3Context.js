@@ -14,21 +14,20 @@ const Web3Provider = ({ children, signer ,account }) => {
             try {
                 const contract = new ethers.Contract(contractAddress, ContractABI.abi, signer)
                 setContract(contract)
-                console.log(contract)
             } catch (err) {
                 console.error(err)
                 alert('Error connecting to contract')
             }
         }
-        
         connectContract()
     }, [signer])
 
+    
     return (
-        <Web3Context.Provider value={{ contract, account }}>
+        <Web3Context.Provider value={{contract,account}}>
         {children}
         </Web3Context.Provider>
     )
 }
 
-export { Web3Context, Web3Provider };
+export { Web3Provider, Web3Context }
